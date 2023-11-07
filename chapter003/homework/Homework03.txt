@@ -1,0 +1,7 @@
+在Java中，以下赋值语句正确的是
+A) int num1= (int)"18";// 错误，应该 Integer.parseInt("18");
+B) int num2=18.0;// 错误，double -> int
+C) double num3=3d;
+D) double num4=8;
+E) int i=48; char ch = i+1;// 错误，int -> char
+F) byte b = 19; short s = b+2;// 错误，int -> short
