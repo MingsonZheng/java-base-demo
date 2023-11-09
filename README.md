@@ -8,3 +8,5 @@ chapter002：变量，加号，整型，浮点数，字符型，布尔类型，�
 chapter003：算术运算符，关系运算符，逻辑运算符，赋值运算符，三元运算符，键盘输入，四种进制，位运算
 
 chapter004：分支，Switch，For，While，多重循环，Break，Continue，Return
+
+chapter005：数组，冒泡排序，查找，二维数组
