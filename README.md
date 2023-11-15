@@ -12,3 +12,5 @@ chapter004：分支，Switch，For，While，多重循环，Break，Continue，R
 chapter005：数组，冒泡排序，查找，二维数组
 
 chapter006：类与对象，方法，递归，重载，可变参数，作用域，构造器，This
+
+chapter007：包，访问修饰符，封装，继承，Super，方法重写，多态，动态绑定，多态数组，多态参数，Object，断点调试，零钱通项目，房屋出租项目
