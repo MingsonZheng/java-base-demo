@@ -1,0 +1,27 @@
+// HashSet
+package com.zzm.set_;
+
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * @author Mingson
+ * @version 1.0
+ */
+public class HashSet_ {
+    public static void main(String[] args) {
+        // 解读
+        // 1. 构造器走的源码
+        /*
+            public HashSet() {
+                map = new HashMap<>();
+            }
+         */
+        Set hashSet = new HashSet();
+
+        // 2. HashSet 可以存放null ，但是只能有一个null，即元素不能重复
+        hashSet.add(null);
+        hashSet.add(null);
+        System.out.println("hashSet=" + hashSet);// [null]
+    }
+}
