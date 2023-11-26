@@ -93,6 +93,7 @@ public class HashSetSource {
                         }
                     }
                     ++modCount;
+                    // size 就是我们每加入一个结点Node(k,v,h,next)，size++
                     if (++size > threshold)
                         resize();
                     afterNodeInsertion(evict);
