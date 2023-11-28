@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>java.util.Collection</OriginalElement>
+  <nodes>
+    <node x="237.5" y="361.5">java.util.HashSet</node>
+    <node x="434.5" y="361.5">java.util.ArrayList</node>
+    <node x="389.0" y="101.5">java.util.Collection</node>
+    <node x="46.5" y="481.5">java.util.LinkedHashSet</node>
+    <node x="400.0" y="-18.5">java.lang.Iterable</node>
+    <node x="61.0" y="221.5">java.util.Set</node>
+    <node x="644.5" y="361.5">java.util.Vector</node>
+    <node x="560.5" y="221.5">java.util.List</node>
+    <node x="843.5" y="361.5">com.sun.javafx.scene.control.skin.VirtualFlow.ArrayLinkedList</node>
+    <node x="40.5" y="361.5">java.util.TreeSet</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="java.util.HashSet" target="java.util.Collection" relationship="REALIZATION">
+      <point x="0.0" y="-18.5" />
+      <point x="328.0" y="180.0" />
+      <point x="528.0" y="180.0" />
+      <point x="40.0" y="18.5" />
+    </edge>
+    <edge source="java.util.Vector" target="java.util.Collection" relationship="REALIZATION">
+      <point x="0.0" y="-18.5" />
+      <point x="728.0" y="180.0" />
+      <point x="528.0" y="180.0" />
+      <point x="40.0" y="18.5" />
+    </edge>
+    <edge source="com.sun.javafx.scene.control.skin.VirtualFlow.ArrayLinkedList" target="java.util.List" relationship="REALIZATION">
+      <point x="0.0" y="-18.5" />
+      <point x="968.0" y="340.0" />
+      <point x="768.0" y="340.0" />
+      <point x="768.0" y="300.0" />
+      <point x="628.0" y="300.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="java.util.Set" target="java.util.Collection" relationship="INTERFACE_GENERALIZATION">
+      <point x="60.0" y="-18.5" />
+      <point x="188.0" y="200.0" />
+      <point x="448.0" y="200.0" />
+      <point x="-40.0" y="18.5" />
+    </edge>
+    <edge source="java.util.Collection" target="java.lang.Iterable" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-18.5" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="java.util.TreeSet" target="java.util.Collection" relationship="REALIZATION">
+      <point x="0.0" y="-18.5" />
+      <point x="128.0" y="340.0" />
+      <point x="228.0" y="340.0" />
+      <point x="228.0" y="180.0" />
+      <point x="528.0" y="180.0" />
+      <point x="40.0" y="18.5" />
+    </edge>
+    <edge source="java.util.LinkedHashSet" target="java.util.Set" relationship="REALIZATION">
+      <point x="-60.0" y="-18.5" />
+      <point x="108.0" y="460.0" />
+      <point x="8.0" y="460.0" />
+      <point x="8.0" y="320.0" />
+      <point x="128.0" y="320.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="java.util.HashSet" target="java.util.Set" relationship="REALIZATION">
+      <point x="0.0" y="-18.5" />
+      <point x="328.0" y="300.0" />
+      <point x="128.0" y="300.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="java.util.ArrayList" target="java.util.Collection" relationship="REALIZATION">
+      <point x="0.0" y="-18.5" />
+      <point x="40.0" y="18.5" />
+    </edge>
+    <edge source="com.sun.javafx.scene.control.skin.VirtualFlow.ArrayLinkedList" target="java.util.Collection" relationship="REALIZATION">
+      <point x="0.0" y="-18.5" />
+      <point x="968.0" y="340.0" />
+      <point x="768.0" y="340.0" />
+      <point x="768.0" y="180.0" />
+      <point x="528.0" y="180.0" />
+      <point x="40.0" y="18.5" />
+    </edge>
+    <edge source="java.util.List" target="java.util.Collection" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-18.5" />
+      <point x="628.0" y="200.0" />
+      <point x="448.0" y="200.0" />
+      <point x="-40.0" y="18.5" />
+    </edge>
+    <edge source="java.util.ArrayList" target="java.util.List" relationship="REALIZATION">
+      <point x="0.0" y="-18.5" />
+      <point x="528.0" y="340.0" />
+      <point x="628.0" y="340.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="java.util.LinkedHashSet" target="java.util.HashSet" relationship="GENERALIZATION">
+      <point x="60.0" y="-18.5" />
+      <point x="228.0" y="460.0" />
+      <point x="328.0" y="460.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="java.util.Vector" target="java.util.List" relationship="REALIZATION">
+      <point x="0.0" y="-18.5" />
+      <point x="728.0" y="320.0" />
+      <point x="628.0" y="320.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="java.util.TreeSet" target="java.util.Set" relationship="REALIZATION">
+      <point x="0.0" y="-18.5" />
+      <point x="0.0" y="18.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.6570135746606335" showDependencies="false" x="560.5000000000001" y="260.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
