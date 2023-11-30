@@ -22,3 +22,5 @@ chapter009：异常
 chapter010：包装类，String，StringBuffer，StringBuilder，Math，Arrays，System，大数，日期
 
 chapter011：集合，List，Set，Map，Collections，Diagrams，集合选型
+
+chapter012：泛型，自定义泛型，JUnit
