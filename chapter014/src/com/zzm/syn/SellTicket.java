@@ -1,4 +1,4 @@
-// 线程同步
+// 线程同步，互斥锁
 package com.zzm.syn;
 
 /**
@@ -36,23 +36,44 @@ class SellTicket03 implements Runnable {
 
     private int ticketNum = 100;// 让多个线程共享 ticketNum
     private boolean loop = true;// 控制run方法变量
+    Object object = new Object();
 
-    public synchronized void sell() { // 同步方法，在同一时刻， 只能有一个线程来执行sell方法
-        if (ticketNum <= 0) {
-            System.out.println("售票结束...");
-            loop = false;
-            return;
+    // 同步方法(静态的) 的锁为当前类本身
+    // 解读
+    // 1. public synchronized static void m1()  锁是加在 SellTicket03.class
+    // 2. 如果在静态方法中，实现一个同步代码块，不能用this，要用 类名.class
+    public synchronized static void m1() {
+
+    }
+    public static void m2() {
+        // synchronized (this) {// 静态方法不能用this
+        synchronized (SellTicket03.class) {
+            System.out.println("m2");
         }
+    }
 
-        // 休眠50毫秒，模拟
-        try {
-            Thread.sleep(50);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    // 说明
+    // 1. public synchronized void sell()  就是一个同步方法
+    // 2. 这时锁在 this对象
+    // 3. 也可以在代码块上写 synchronized，同步代码块，互斥锁还是在this对象
+    public /*synchronized*/ void sell() { // 同步方法，在同一时刻， 只能有一个线程来执行sell方法
+        synchronized (/*this*/ object) { // 三个线程操作同一个对象，所以也可以用 object
+            if (ticketNum <= 0) {
+                System.out.println("售票结束...");
+                loop = false;
+                return;
+            }
+
+            // 休眠50毫秒，模拟
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            System.out.println("窗口 " + Thread.currentThread().getName() + " 售出一张票"
+                    + " 剩余票数=" + (--ticketNum));
         }
-
-        System.out.println("窗口 " + Thread.currentThread().getName() + " 售出一张票"
-                + " 剩余票数=" + (--ticketNum));
     }
 
     @Override
