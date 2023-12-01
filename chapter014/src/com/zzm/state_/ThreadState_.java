@@ -6,6 +6,16 @@ package com.zzm.state_;
  * @version 1.0
  */
 public class ThreadState_ {
+    /*
+    public enum State {
+    NEW,
+    RUNNABLE, // Ready or Running
+    BLOCKED,
+    WAITING,
+    TIMED_WAITING,
+    TERMINATED;
+    }
+     */
     public static void main(String[] args) throws InterruptedException {
         T t = new T();
         System.out.println(t.getName() + " 状态 " + t.getState());
