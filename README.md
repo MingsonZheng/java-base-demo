@@ -26,3 +26,5 @@ chapter011：集合，List，Set，Map，Collections，Diagrams，集合选型
 chapter012：泛型，自定义泛型，JUnit
 
 chapter013：绘图，坦克大战，事件
+
+chapter014：cpu数量，线程，多线程，线程退出，线程中断，线程插队，守护线程，线程状态，线程同步，互斥锁，死锁，释放锁
