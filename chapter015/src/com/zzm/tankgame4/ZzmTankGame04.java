@@ -25,7 +25,7 @@ public class ZzmTankGame04 extends JFrame {
         Thread thread = new Thread(mp);
         thread.start();
         this.add(mp);// 面板(就是游戏的绘图区域)
-        this.setSize(1000, 750);
+        this.setSize(1200, 950);
         this.addKeyListener(mp);// 让JFrame 监听mp的键盘事件
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);

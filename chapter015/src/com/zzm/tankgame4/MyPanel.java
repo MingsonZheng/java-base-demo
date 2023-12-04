@@ -19,6 +19,7 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
     // 定义敌人坦克，放入到Vector
     Vector<EnemyTank> enemyTanks = new Vector<>();
     // 定义一个Vector，用于存放炸弹
+    // 说明，当子弹击中坦克时，加入一个Bomb对象到bombs
     Vector<Bomb> bombs = new Vector<>();
     int enemyTankSize = 3;
 
@@ -35,6 +36,8 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
             EnemyTank enemyTank = new EnemyTank((100 * (i + 1)), 0);
             // 设置方向
             enemyTank.setDirect(2);
+            // 启动敌人坦克线程，让他动起来
+            new Thread(enemyTank).start();
             // 给该enemyTank 加入一颗子弹
             Shot shot = new Shot(enemyTank.getX() + 20, enemyTank.getY() + 60, enemyTank.getDirect());
             // 加入enemyTank的Vector 成员
@@ -63,6 +66,26 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
             System.out.println("子弹被绘制...");
             // g.fill3DRect(hero.shot.x, hero.shot.y, 1, 1, false);
             g.draw3DRect(hero.shot.x, hero.shot.y, 1, 1, false);
+        }
+
+        // 如果bombs 集合中有对象，就画出
+        for (int i = 0; i < bombs.size(); i++) {
+            // 取出子弹
+            Bomb bomb = bombs.get(i);
+            // 根据当前这个bomb对象的Life值去画出对应的图片
+            if (bomb.life > 6) {
+                g.drawImage(image1, bomb.x, bomb.y, 60, 60, this);
+            } else if (bomb.life > 3) {
+                g.drawImage(image2, bomb.x, bomb.y, 60, 60, this);
+            } else {
+                g.drawImage(image3, bomb.x, bomb.y, 60, 60, this);
+            }
+            // 让这个炸弹的生命值减少
+            bomb.lifeDown();
+            // 如果bomb life 为0，就从bombs 的集合中删除
+            if (bomb.life == 0) {
+                bombs.remove(bomb);
+            }
         }
 
         // 画出敌人的坦克，遍历Vector
@@ -148,7 +171,7 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
 
     // 编写方法，判断我方的子弹是否击中敌人坦克
     // 什么时候判断 我方的子弹是否击中敌人坦克 ? run方法
-    public static void hitTank(Shot s, EnemyTank enemyTank) {
+    public void hitTank(Shot s, EnemyTank enemyTank) {
         // 判断s 击中坦克
         switch (enemyTank.getDirect()) {
             case 0: // 坦克向上
@@ -157,6 +180,11 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
                 && s.y > enemyTank.getY() && s.y < enemyTank.getY() + 60) {
                     s.isLive = false;
                     enemyTank.isLive = false;
+                    // 当我的子弹击中敌人坦克后，将enemyTank 从Vector 拿掉
+                    enemyTanks.remove(enemyTank);
+                    // 创建Bomb对象，加入到bombs集合
+                    Bomb bomb = new Bomb(enemyTank.getX(), enemyTank.getY());
+                    bombs.add(bomb);
                 }
                 break;
             case 1: // 坦克向左
@@ -165,6 +193,11 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
                         && s.y > enemyTank.getY() && s.y < enemyTank.getY() + 40) {
                     s.isLive = false;
                     enemyTank.isLive = false;
+                    // 当我的子弹击中敌人坦克后，将enemyTank 从Vector 拿掉
+                    enemyTanks.remove(enemyTank);
+                    // 创建Bomb对象，加入到bombs集合
+                    Bomb bomb = new Bomb(enemyTank.getX(), enemyTank.getY());
+                    bombs.add(bomb);
                 }
                 break;
         }
@@ -181,16 +214,25 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
         if (e.getKeyCode() == KeyEvent.VK_W) { // 按下W键
             // 改变坦克的方向
             hero.setDirect(0);
-            hero.moveUp();
+            if (hero.getY() > 0) {
+                hero.moveUp();
+            }
         } else if (e.getKeyCode() == KeyEvent.VK_D) { // 按下D键
             hero.setDirect(1);
-            hero.moveRight();
+            if (hero.getX() + 60 < 1000) {
+                hero.moveRight();
+            }
         } else if (e.getKeyCode() == KeyEvent.VK_S) { // 按下S键
             hero.setDirect(2);
-            hero.moveDown();
+//            System.out.println("hero.getY()=" + hero.getY());
+            if (hero.getY() + 60 < 750) {
+                hero.moveDown();
+            }
         } else if (e.getKeyCode() == KeyEvent.VK_A) { // 按下A键
             hero.setDirect(3);
-            hero.moveLeft();
+            if (hero.getX() > 0) {
+                hero.moveLeft();
+            }
         }
 
         // 如果用户按下的是J,就发射

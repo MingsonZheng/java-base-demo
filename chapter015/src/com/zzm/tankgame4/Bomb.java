@@ -16,7 +16,7 @@ public class Bomb {
     }
 
     // 减少生命值
-    public void lifeDown() {
+    public void lifeDown() {// 配合出现图片的爆炸效果
         if (life > 0) {
             life--;
         } else {
