@@ -3,12 +3,16 @@
   <ID>JAVA</ID>
   <OriginalElement>java.io.Reader</OriginalElement>
   <nodes>
-    <node x="35.0" y="-19.0">java.lang.AutoCloseable</node>
-    <node x="58.0" y="68.0">java.io.Closeable</node>
-    <node x="97.25" y="242.0">java.io.InputStreamReader</node>
-    <node x="156.25" y="155.0">java.io.Reader</node>
-    <node x="-99.75" y="301.5">java.io.FileReader</node>
-    <node x="232.0" y="68.0">java.lang.Readable</node>
+    <node x="607.0" y="242.0">java.io.CharArrayReader</node>
+    <node x="294.75" y="-19.0">java.lang.AutoCloseable</node>
+    <node x="168.0" y="242.0">java.io.StringReader</node>
+    <node x="317.75" y="68.0">java.io.Closeable</node>
+    <node x="375.0" y="242.0">java.io.BufferedReader</node>
+    <node x="416.0" y="155.0">java.io.Reader</node>
+    <node x="-100.0" y="242.0">java.io.InputStreamReader</node>
+    <node x="389.0" y="329.0">java.io.PipedReader</node>
+    <node x="-57.0" y="329.0">java.io.FileReader</node>
+    <node x="491.75" y="68.0">java.lang.Readable</node>
   </nodes>
   <notes />
   <edges>
@@ -18,30 +22,51 @@
     </edge>
     <edge source="java.io.InputStreamReader" target="java.io.Reader" relationship="GENERALIZATION">
       <point x="0.0" y="-18.5" />
+      <point x="24.0" y="217.0" />
+      <point x="481.0" y="217.0" />
       <point x="0.0" y="18.5" />
     </edge>
     <edge source="java.io.FileReader" target="java.io.InputStreamReader" relationship="GENERALIZATION">
-      <point x="-0.0" y="-18.5" />
-      <point x="-18.75" y="260.5" />
-      <point x="-124.0" y="-0.0" />
+      <point x="0.0" y="-18.5" />
+      <point x="0.0" y="18.5" />
     </edge>
     <edge source="java.io.Reader" target="java.lang.Readable" relationship="REALIZATION">
       <point x="0.0" y="-18.5" />
-      <point x="221.25" y="130.0" />
-      <point x="307.5" y="130.0" />
+      <point x="481.0" y="130.0" />
+      <point x="567.25" y="130.0" />
       <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="java.io.CharArrayReader" target="java.io.Reader" relationship="GENERALIZATION">
+      <point x="0.0" y="-18.5" />
+      <point x="720.0" y="217.0" />
+      <point x="481.0" y="217.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="java.io.PipedReader" target="java.io.Reader" relationship="GENERALIZATION">
+      <point x="92.0" y="-0.0" />
+      <point x="850.5" y="347.5" />
+      <point x="850.5" y="173.5" />
+      <point x="65.0" y="-0.0" />
     </edge>
     <edge source="java.io.Reader" target="java.io.Closeable" relationship="REALIZATION">
       <point x="0.0" y="-18.5" />
-      <point x="221.25" y="130.0" />
-      <point x="135.0" y="130.0" />
+      <point x="481.0" y="130.0" />
+      <point x="394.75" y="130.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="java.io.StringReader" target="java.io.Reader" relationship="GENERALIZATION">
+      <point x="0.0" y="-18.5" />
+      <point x="261.5" y="217.0" />
+      <point x="481.0" y="217.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="java.io.BufferedReader" target="java.io.Reader" relationship="GENERALIZATION">
+      <point x="0.0" y="-18.5" />
       <point x="0.0" y="18.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic" zoom="1.4148148148148147" showDependencies="false" x="84.0" y="183.5" />
-  <SelectedNodes>
-    <node>java.io.FileReader</node>
-  </SelectedNodes>
+  <settings layout="Hierarchic" zoom="0.6266205704407951" showDependencies="false" x="478.5" y="183.5" />
+  <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>

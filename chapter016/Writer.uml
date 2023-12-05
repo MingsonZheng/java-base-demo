@@ -3,13 +3,17 @@
   <ID>JAVA</ID>
   <OriginalElement>java.io.Writer</OriginalElement>
   <nodes>
-    <node x="-100.0" y="68.0">java.io.Flushable</node>
-    <node x="71.99999999999997" y="68.0">java.lang.Appendable</node>
-    <node x="248.0" y="-19.0">java.lang.AutoCloseable</node>
-    <node x="271.0" y="68.0">java.io.Closeable</node>
-    <node x="324.5" y="301.5">java.io.FileWriter</node>
-    <node x="33.0" y="242.0">java.io.OutputStreamWriter</node>
-    <node x="100.49999999999997" y="155.0">java.io.Writer</node>
+    <node x="456.0" y="155.0">java.io.Writer</node>
+    <node x="596.25" y="-19.0">java.lang.AutoCloseable</node>
+    <node x="619.25" y="68.0">java.io.Closeable</node>
+    <node x="-48.5" y="329.0">java.io.FileWriter</node>
+    <node x="-100.0" y="242.0">java.io.OutputStreamWriter</node>
+    <node x="177.0" y="242.0">java.io.CharArrayWriter</node>
+    <node x="447.25" y="68.0">java.io.Flushable</node>
+    <node x="639.0" y="242.0">java.io.StringWriter</node>
+    <node x="248.25" y="68.0">java.lang.Appendable</node>
+    <node x="429.0" y="329.0">java.io.PipedWriter</node>
+    <node x="415.0" y="242.0">java.io.BufferedWriter</node>
   </nodes>
   <notes />
   <edges>
@@ -17,36 +21,59 @@
       <point x="0.0" y="-18.5" />
       <point x="0.0" y="18.5" />
     </edge>
+    <edge source="java.io.CharArrayWriter" target="java.io.Writer" relationship="GENERALIZATION">
+      <point x="0.0" y="-18.5" />
+      <point x="286.0" y="217.0" />
+      <point x="517.0" y="217.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
     <edge source="java.io.OutputStreamWriter" target="java.io.Writer" relationship="GENERALIZATION">
       <point x="0.0" y="-18.5" />
+      <point x="28.5" y="217.0" />
+      <point x="517.0" y="217.0" />
       <point x="0.0" y="18.5" />
     </edge>
     <edge source="java.io.Writer" target="java.io.Flushable" relationship="REALIZATION">
       <point x="0.0" y="-18.5" />
-      <point x="161.5" y="130.0" />
-      <point x="-24.0" y="130.0" />
+      <point x="517.0" y="130.0" />
+      <point x="523.25" y="130.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="java.io.StringWriter" target="java.io.Writer" relationship="GENERALIZATION">
+      <point x="0.0" y="-18.5" />
+      <point x="728.5" y="217.0" />
+      <point x="517.0" y="217.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="java.io.BufferedWriter" target="java.io.Writer" relationship="GENERALIZATION">
+      <point x="0.0" y="-18.5" />
       <point x="0.0" y="18.5" />
     </edge>
     <edge source="java.io.FileWriter" target="java.io.OutputStreamWriter" relationship="GENERALIZATION">
-      <point x="-0.0" y="-18.5" />
-      <point x="401.5" y="260.5" />
-      <point x="128.5" y="-0.0" />
+      <point x="0.0" y="-18.5" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="java.io.PipedWriter" target="java.io.Writer" relationship="GENERALIZATION">
+      <point x="88.0" y="-0.0" />
+      <point x="835.5" y="347.5" />
+      <point x="835.5" y="173.5" />
+      <point x="61.0" y="-0.0" />
     </edge>
     <edge source="java.io.Writer" target="java.io.Closeable" relationship="REALIZATION">
       <point x="0.0" y="-18.5" />
-      <point x="161.5" y="130.0" />
-      <point x="348.0" y="130.0" />
+      <point x="517.0" y="130.0" />
+      <point x="696.25" y="130.0" />
       <point x="0.0" y="18.5" />
     </edge>
     <edge source="java.io.Writer" target="java.lang.Appendable" relationship="REALIZATION">
       <point x="0.0" y="-18.5" />
+      <point x="517.0" y="130.0" />
+      <point x="337.75" y="130.0" />
       <point x="0.0" y="18.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic" zoom="1.2764084507042253" showDependencies="false" x="401.5" y="320.0" />
-  <SelectedNodes>
-    <node>java.io.FileWriter</node>
-  </SelectedNodes>
+  <settings layout="Hierarchic" zoom="0.831081081081081" showDependencies="false" x="343.99999999999994" y="177.0" />
+  <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
