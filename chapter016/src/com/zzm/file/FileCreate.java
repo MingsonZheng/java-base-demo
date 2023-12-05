@@ -1,4 +1,4 @@
-// 文件
+// 文件创建
 package com.zzm.file;
 
 import org.junit.jupiter.api.Test;
@@ -61,4 +61,10 @@ public class FileCreate {
             e.printStackTrace();
         }
     }
+
+    // 下面四个都是抽象类
+    // InputStream // 字节输入流
+    // OutputStream // 字节输出流
+    // Reader // 字符输入流
+    // Writer // 字符输出流
 }
