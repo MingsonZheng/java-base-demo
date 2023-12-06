@@ -18,7 +18,7 @@ public class ObjectOutputStream_ {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filePath));
 
         // 序列化数据到 d:\data.dat
-        oos.write(100);// int ->Integer(实现了 Serializable)
+        oos.writeInt(100);// int ->Integer(实现了 Serializable)
         oos.writeBoolean(true);// boolean -> Boolean (实现了 Serializable)
         oos.writeChar('a');// char -> Character (实现了 Serializable)
         oos.writeUTF("中国你好");// String
