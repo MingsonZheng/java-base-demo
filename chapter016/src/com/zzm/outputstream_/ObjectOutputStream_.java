@@ -3,7 +3,6 @@ package com.zzm.outputstream_;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 
 /**
  * @author Mingson
@@ -28,16 +27,5 @@ public class ObjectOutputStream_ {
 
         oos.close();
         System.out.println("数据保存完毕(序列化形式)");
-    }
-}
-
-// 如果需要序列化某个类的对象，实现 Serializable
-class Dog implements Serializable {
-    private String name;
-    private int age;
-
-    public Dog(String name, int age) {
-        this.name = name;
-        this.age = age;
     }
 }
