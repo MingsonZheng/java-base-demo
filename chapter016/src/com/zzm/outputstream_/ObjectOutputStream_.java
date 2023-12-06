@@ -21,6 +21,7 @@ public class ObjectOutputStream_ {
         oos.writeInt(100);// int ->Integer(实现了 Serializable)
         oos.writeBoolean(true);// boolean -> Boolean (实现了 Serializable)
         oos.writeChar('a');// char -> Character (实现了 Serializable)
+        oos.writeDouble(9.5);// double -> Double (实现了Serializable)
         oos.writeUTF("中国你好");// String
         // 保存一个dog对象
         oos.writeObject(new Dog("旺财", 10));
