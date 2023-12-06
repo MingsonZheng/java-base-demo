@@ -1,4 +1,4 @@
-// ObjectInputStream
+// 对象处理流
 package com.zzm.inputstream_;
 
 import com.zzm.outputstream_.Dog;

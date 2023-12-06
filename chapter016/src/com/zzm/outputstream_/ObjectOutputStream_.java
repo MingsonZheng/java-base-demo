@@ -1,4 +1,4 @@
-// ObjectOutputStream
+// 对象处理流
 package com.zzm.outputstream_;
 
 import java.io.FileOutputStream;
@@ -23,7 +23,8 @@ public class ObjectOutputStream_ {
         oos.writeDouble(9.5);// double -> Double (实现了Serializable)
         oos.writeUTF("中国你好");// String
         // 保存一个dog对象
-        oos.writeObject(new Dog("旺财", 10));
+        // oos.writeObject(new Dog("旺财", 10));
+        oos.writeObject(new Dog("旺财", 10, "日本", "白色"));
 
         oos.close();
         System.out.println("数据保存完毕(序列化形式)");
