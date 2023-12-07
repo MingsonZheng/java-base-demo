@@ -55,11 +55,26 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
         image3 = Toolkit.getDefaultToolkit().getImage(Panel.class.getResource("/bomb_3.jpg"));
     }
 
+    // 编写方法，显示我方击毁敌方坦克的信息
+    public void showInfo(Graphics g) {
+
+        // 画出玩家的总成绩
+        g.setColor(Color.BLACK);
+        Font font = new Font("宋体", Font.BOLD, 25);
+        g.setFont(font);
+
+        g.drawString("您累积击毁敌方坦克", 1020, 30);
+        drawTank(1020, 60, g, 0, 0);// 画出一个敌方坦克
+        g.setColor(Color.BLACK);// 这里需要重新设置成黑色
+        g.drawString(Recorder.getAllEnemyTankNum() + "", 1080, 100);
+    }
+
     @Override
     public void paint(Graphics g) {
         super.paint(g);
         g.fillRect(0, 0, 1000, 750);// 填充矩形，默认黑色
-
+        // 显示我方击毁敌方坦克的信息
+        showInfo(g);
         // 画出自己的坦克-封装方法
         if (hero != null && hero.isLive) {
             drawTank(hero.getX(), hero.getY(), g, hero.getDirect(), 1);
@@ -241,6 +256,11 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
                     tank.isLive = false;
                     // 当我的子弹击中敌人坦克后，将tank 从Vector 拿掉
                     enemyTanks.remove(tank);
+                    // 当我方击毁一个敌人坦克时，就对数据aLLEnemyTankNum++
+                    // 解读，因为 enemyTank 可以是 Hero 也可以是 EnemyTank
+                    if (tank instanceof EnemyTank) {
+                        Recorder.addAllEnemyTankNum();
+                    }
                     // 创建Bomb对象，加入到bombs集合
                     Bomb bomb = new Bomb(tank.getX(), tank.getY());
                     bombs.add(bomb);
@@ -254,6 +274,11 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
                     tank.isLive = false;
                     // 当我的子弹击中敌人坦克后，将tank 从Vector 拿掉
                     enemyTanks.remove(tank);
+                    // 当我方击毁一个敌人坦克时，就对数据aLLEnemyTankNum++
+                    // 解读，因为 enemyTank 可以是 Hero 也可以是 EnemyTank
+                    if (tank instanceof EnemyTank) {
+                        Recorder.addAllEnemyTankNum();
+                    }
                     // 创建Bomb对象，加入到bombs集合
                     Bomb bomb = new Bomb(tank.getX(), tank.getY());
                     bombs.add(bomb);
