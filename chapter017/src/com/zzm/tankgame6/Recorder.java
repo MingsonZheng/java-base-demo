@@ -1,8 +1,6 @@
 package com.zzm.tankgame6;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Vector;
 
 /**
@@ -10,6 +8,7 @@ import java.util.Vector;
  * @version 1.0
  * 该类用于记录相关信息的。和文件交互
  */
+@SuppressWarnings({"all"})
 public class Recorder {
 
     // 定义变量，记录我方击毁敌人坦克数
@@ -17,9 +16,12 @@ public class Recorder {
     // 定义IO对象，准备写数据到文件中
     private static FileWriter fw = null;
     private static BufferedWriter bw = null;
+    private static BufferedReader br = null;
     private static String recordFile = "d:\\myRecord.txt";
     // 定义Vector，指向 MyPaneL 对象的 敌人坦克Vector
     private static Vector<EnemyTank> enemyTanks = null;
+    // 定义一个Node 的Vector，用于保存敌人的信息node
+    private static Vector<Node> nodes = new Vector<>();
 
     public static int getAllEnemyTankNum() {
         return allEnemyTankNum;
@@ -67,5 +69,38 @@ public class Recorder {
                 e.printStackTrace();
             }
         }
+    }
+
+    // 增加一个方法，用于读取recordFile，恢复相关信息
+    // 该方法，在继续上局的时候调用即可
+    public static Vector<Node> getNodesAndEnemyTankRec() {
+
+        try {
+            File file = new File(recordFile);
+            if (file.exists()) {
+                br = new BufferedReader(new FileReader(recordFile));
+                allEnemyTankNum = Integer.parseInt(br.readLine());
+                // 循环读取文件，生成nodes 集合
+                String line = "";// 255 40 0
+                while ((line = br.readLine()) != null) {
+                    String[] xyd = line.split(" ");
+                    Node node = new Node(Integer.parseInt(xyd[0]), Integer.parseInt(xyd[1]),
+                            Integer.parseInt(xyd[2]));
+                    nodes.add(node);// 放入nodes Vector
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (br != null) {
+                    br.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return nodes;
     }
 }

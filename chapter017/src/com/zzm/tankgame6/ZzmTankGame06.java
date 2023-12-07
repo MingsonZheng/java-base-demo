@@ -3,6 +3,7 @@ package com.zzm.tankgame6;
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Scanner;
 
 /**
  * @author Mingson
@@ -16,13 +17,16 @@ public class ZzmTankGame06 extends JFrame {
 
     // 定义 MyPanel
     MyPanel mp = null;
+    static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         ZzmTankGame06 zzmTankGame06 = new ZzmTankGame06();
     }
 
     public ZzmTankGame06() {
-        mp = new MyPanel();
+        System.out.println("请输入选择 1: 新游戏 2: 继续上局");
+        String key = scanner.next();
+        mp = new MyPanel(key);
         // 将mp 放入到Thread，并启动
         Thread thread = new Thread(mp);
         thread.start();
