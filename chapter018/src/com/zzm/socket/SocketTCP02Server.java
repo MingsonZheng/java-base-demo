@@ -10,7 +10,7 @@ import java.net.Socket;
 /**
  * @author Mingson
  * @version 1.0
- * 服务端
+ * 服务器端接收到 客户端发送的 信息，输出，并发送“hello,client”,再退出
  */
 public class SocketTCP02Server {
     public static void main(String[] args) throws IOException {
