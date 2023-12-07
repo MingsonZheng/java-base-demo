@@ -34,6 +34,8 @@ public class MyPanel extends JPanel implements KeyListener, Runnable {
         for (int i = 0; i < enemyTankSize; i++) {
             // 创建一个敌人的坦克
             EnemyTank enemyTank = new EnemyTank((100 * (i + 1)), 0);
+            // 将enemyTanks 设置给 enemyTank !!!
+            enemyTank.setEnemyTanks(enemyTanks);
             // 设置方向
             enemyTank.setDirect(2);
             // 启动敌人坦克线程，让他动起来
