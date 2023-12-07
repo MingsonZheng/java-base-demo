@@ -9,7 +9,7 @@ import java.awt.event.WindowEvent;
  * @version 1.0
  * 1. 防止敌人坦克重叠运动[思路->走代码]
  * 2. 记录玩家的成绩(累积击毁敌方坦克数),存盘退出[io流]
- * 3. 记录当时的敌人坦克坐标,存盘退出[io流]
+ * 3. 记录当时的敌人坦克坐标/方向,存盘退出[io流]
  * 4. 玩游戏时，可以选择是开新游戏还是继续上局游戏
  */
 public class ZzmTankGame06 extends JFrame {
