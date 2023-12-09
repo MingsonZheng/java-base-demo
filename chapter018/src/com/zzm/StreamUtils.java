@@ -1,5 +1,5 @@
 // TCP文件上传
-package com.zzm.upload;
+package com.zzm;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
