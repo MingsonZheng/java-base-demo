@@ -1,6 +1,7 @@
 package com.zzm.qqserver.service;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * @author Mingson
@@ -19,5 +20,16 @@ public class ManageClientThreads {
     // 根据userId 返回ServerConnectClientThread线程
     public static ServerConnectClientThread getServerConnectClientThread(String userId) {
         return hm.get(userId);
+    }
+
+    // 这里编写方法，可以返回在线用户列表
+    public static String getOnlineUser() {
+        // 集合遍历 ，遍历 hashmap的key
+        Iterator<String> iterator = hm.keySet().iterator();
+        String onlineUserList = "";
+        while (iterator.hasNext()) {
+            onlineUserList += iterator.next().toLowerCase() + " ";
+        }
+        return onlineUserList;
     }
 }
