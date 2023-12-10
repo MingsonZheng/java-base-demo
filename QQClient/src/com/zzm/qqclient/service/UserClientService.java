@@ -81,4 +81,29 @@ public class UserClientService {
             e.printStackTrace();
         }
     }
+
+    // 编写方法，退出客户端，并给服务端发送一个退出系统的message对象
+    public void logout() {
+        Message message = new Message();
+        message.setMesType(MessageType.MESSAGE_CLIENT_EXIT);
+        message.setSender(u.getUserId());// 一定要指定我是哪个客户端id
+
+        // 发送message
+        try {
+            // ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+            // 从管理线程的集合中，通过userId，得到这个线程
+            ClientConnectServerThread clientConnectServerThread =
+                    ManageClientConnectServerThread.getClientConnectServerThread(u.getUserId());
+            // 通过这个线程得到关联的socket
+            Socket socket = clientConnectServerThread.getSocket();
+            // 得到当前线程的Socket 对应的 ObjectOutputStream 对象
+            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+
+            oos.writeObject(message);
+            System.out.println(u.getUserId() + " 退出系统 ");
+            System.exit(0);// 结束进程
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
