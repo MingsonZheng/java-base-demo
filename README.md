@@ -36,3 +36,5 @@ chapter016：文件，字节流，字符流，节点流和处理流，对象处�
 chapter017：坦克大战
 
 chapter018：InetAddress，TCP 字节流，TCP 字符流，TCP文件上传，UDP 网络编程
+
+QQClient，QQServer：QQ用户登陆，拉取在线用户，无异常退出系统，私聊，群发，发文件
