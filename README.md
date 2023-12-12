@@ -38,3 +38,5 @@ chapter017：坦克大战
 chapter018：InetAddress，TCP 字节流，TCP 字符流，TCP文件上传，UDP 网络编程
 
 QQClient，QQServer：QQ用户登陆，拉取在线用户，无异常退出系统，私聊，群发，发文件
+
+chapter019：反射快速入门，反射相关类，反射调用优化，Class类分析，Class常用方法，获取Class类对象，哪些类型有 Class 对象，动态和静态加载，类加载五个阶段，获取类的结构信息，反射机制创建实例，反射操作属性，反射调用方法
