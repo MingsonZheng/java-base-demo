@@ -1,4 +1,4 @@
-// Statement的SQL注入问愿
+// Statement的SQL注入问题
 package com.zzm.jdbc.statement_;
 
 import java.io.FileInputStream;
@@ -12,7 +12,7 @@ import java.util.Scanner;
 /**
  * @author Mingson
  * @version 1.0
- * 演示statement 的注入问愿
+ * 演示statement 的注入问题
  */
 @SuppressWarnings({"all"})
 public class Statement_ {
