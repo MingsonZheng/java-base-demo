@@ -51,6 +51,7 @@ public class ResultSet_ {
         // 5. 使用while取出数据
         while (resultSet.next()) {// 让光标向后移动，如果没有更多行，则返回false
             int id = resultSet.getInt(1);// 获取该行的第1列
+            // int id1 = resultSet.getInt("id");// 通过列名来获取值
             String name = resultSet.getString(2);// 获取该行的第2列
             String sex = resultSet.getString(3);
             Date date = resultSet.getDate(4);
