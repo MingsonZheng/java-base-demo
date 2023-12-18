@@ -58,6 +58,26 @@ public class Batch_ {
             preparedStatement.setString(1, "jack" + i);
             preparedStatement.setString(2, "666");
             // 将sql 语句加入到批处理包中 -> 看源码
+            /*
+            // 1. 第一就创建 ArrayList - elementData => Object[]
+            // 2. elementData => Object[] 就会存放我们预处理的sgl语句
+            // 3. 当elementData满后，就按照1.5扩容
+            // 4. 当添加到指定的值后，就executeBatch
+            // 5. 批量处理会减少我们发送sql语句的网络开销，而且减少编译次数，因此效率提高
+            public void addBatch() throws SQLException {
+                synchronized(this.checkClosed().getConnectionMutex()) {
+                    if (this.batchedArgs == null) {
+                        this.batchedArgs = new ArrayList();
+                    }
+
+                    for(int i = 0; i < this.parameterValues.length; ++i) {
+                        this.checkAllParametersSet(this.parameterValues[i], this.parameterStreams[i], i);
+                    }
+
+                    this.batchedArgs.add(new BatchParams(this.parameterValues, this.parameterStreams, this.isStream, this.streamLengths, this.isNull));
+                }
+            }
+             */
             preparedStatement.addBatch();
             // 当有1000条记录时，在批量执行
             if ((i + 1) % 1000 == 0) {// 满1000条sql
