@@ -124,4 +124,29 @@ public class DBUtils_USE {
         // 释放资源
         JDBCUtilsByDruid.close(null, null, connection);
     }
+
+    // 演示apache-dbutils + druid 完成 dml (update，insert ,delete)
+    @Test
+    public void testDML() throws SQLException {
+
+        // 1. 得到 连接 (druid)
+        Connection connection = JDBCUtilsByDruid.getConnection();
+        // 2. 使用 DBUtils 类和接口 ，先引入DBUtils 相关的jar(commons-dbutils) ，加入到本Project
+        // 3. 创建 QueryRunner
+        QueryRunner queryRunner = new QueryRunner();
+
+        // 4. 这里组织sql 完成 update，insert delete
+        // String sql = "update actor set name = ? where id = ?";
+        // String sql = "insert into actor values(null, ?, ?, ?, ?)";
+        String sql = "delete from actor where id = ?";
+
+        // 解读
+        // (1) 执行dml 操作是 queryRunner.update()
+        // (2) 返回的值是受影响的行数 (affected: 受影啊)
+        int affectedRow = queryRunner.update(connection, sql, 4);
+        System.out.println(affectedRow > 0 ? "执行成功" : "执行没有影响到表");
+
+        // 释放资源
+        JDBCUtilsByDruid.close(null, null, connection);
+    }
 }
