@@ -2,7 +2,9 @@
 package com.zzm.jdbc.datasource;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -80,6 +82,44 @@ public class DBUtils_USE {
         for (Actor actor : list) {
             System.out.println(actor);
         }
+
+        // 释放资源
+        JDBCUtilsByDruid.close(null, null, connection);
+    }
+
+    // 演示 apache-dbutils + druid 完成 返回的结果是单行记录(单个对象)
+    @Test
+    public void testQuerySingle() throws SQLException {
+
+        // 1. 得到 连接 (druid)
+        Connection connection = JDBCUtilsByDruid.getConnection();
+        // 2，使用 DBUtils 类和接口 ，先引入DBUtils 相关的jar(commons-dbutils) ，加入到本Project
+        // 3. 创建 QueryRunner
+        QueryRunner queryRunner = new QueryRunner();
+        // 4. 就可以执行相关的方法，返回单个对象
+        String sql = "select * from actor where id = ?";
+        // 因为我们返回的单行记录<--->单个对象，使用的 Handler 是 BeanHandler
+        Actor actor = queryRunner.query(connection, sql, new BeanHandler<>(Actor.class), 2);
+        System.out.println(actor);
+
+        // 释放资源
+        JDBCUtilsByDruid.close(null, null, connection);
+    }
+
+    // 演示apache-dbutils + druid 完成查询结果是单行单列-返回的就是object
+    @Test
+    public void testScalar() throws SQLException {
+
+        // 1. 得到 连接 (druid)
+        Connection connection = JDBCUtilsByDruid.getConnection();
+        // 2，使用 DBUtils 类和接口 ，先引入DBUtils 相关的jar(commons-dbutils) ，加入到本Project
+        // 3. 创建 QueryRunner
+        QueryRunner queryRunner = new QueryRunner();
+        // 4. 就可以执行相关的方法，返回单行单列，返回的就是object
+        String sql = "select name from actor where id = ?";
+
+        Object query = queryRunner.query(connection, sql, new ScalarHandler(), 2);
+        System.out.println(query);
 
         // 释放资源
         JDBCUtilsByDruid.close(null, null, connection);
