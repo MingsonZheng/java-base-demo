@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Properties;
 
 /**
@@ -51,5 +52,22 @@ public class C3P0_ {
         }
         long end = System.currentTimeMillis();
         System.out.println("c3p0 5000连接mysql 耗时=" + (end - start));
+    }
+    
+    // 第二种方式 使用配置文件模板来完成
+    // 1. 将c3p0 提供的 c3p0.config.xml 拷贝到src目录下
+    // 2. 该文件指定了连接数据库和连接池的相关参数
+    @Test
+    public void testC3P0_02() throws SQLException {
+        ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource("zzm");
+        // 测试连接池的效率，测试对mysql 5000次操作
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < 5000; i++) {
+            Connection connection = comboPooledDataSource.getConnection();
+            // System.out.println("连接OK");
+            connection.close();
+        }
+        long end = System.currentTimeMillis();
+        System.out.println("c3p0 5000连接mysql 第二种方式 耗时=" + (end - start));
     }
 }
