@@ -35,6 +35,45 @@ public class MHLView {
         new MHLView().mainMenu();
     }
 
+    // 结账
+    public void payBill() {
+        System.out.println("===============结账服务===============");
+        System.out.print("请选择要结账的餐桌编号(-1退出)：");
+        int diningTableId = Utility.readInt();
+        if (diningTableId == -1) {
+            System.out.println("===============取消结账===============");
+            return;
+        }
+        // 验证餐桌是否存在
+        DiningTable diningTable = diningTableService.getDiningTableById(diningTableId);
+        if (diningTable == null) {
+            System.out.println("===============结账的餐桌不存在===============");
+            return;
+        }
+        // 验证餐桌是否有需要结账的账单
+        if (!billService.hasPayBillByDiningTableId(diningTableId)) {
+            System.out.println("===============该餐位没有未结账账单===============");
+            return;
+        }
+        System.out.print("结账方式(现金/支付宝/微信)回车表示退出：");
+        String payMode = Utility.readString(20, "");// 说明如果回车，就是返回 ""
+        if ("".equals(payMode)) {
+            System.out.println("===============取消结账===============");
+            return;
+        }
+        char key = Utility.readConfirmSelection();
+        if (key == 'Y') {// 结账
+            // 调用我们写的方法
+            if (billService.payBill(diningTableId, payMode)) {
+                System.out.println("===============完成结账===============");
+            } else {
+                System.out.println("===============结账失败===============");
+            }
+        } else {
+            System.out.println("===============取消结账===============");
+        }
+    }
+
     // 查看账单
     public void listBill() {
         List<Bill> bills = billService.list();
@@ -48,19 +87,19 @@ public class MHLView {
     // 点餐服务
     public void orderMenu() {
         System.out.println("===============点餐服务===============");
-        System.out.println("请输入点餐的桌号(-1退出)：");
+        System.out.print("请输入点餐的桌号(-1退出)：");
         int orderDiningTableId = Utility.readInt();
         if (orderDiningTableId == -1) {
             System.out.println("===============取消点餐===============");
             return;
         }
-        System.out.println("请输入点餐的菜品号(-1退出)：");
+        System.out.print("请输入点餐的菜品号(-1退出)：");
         int orderMenuId = Utility.readInt();
         if (orderMenuId == -1) {
             System.out.println("===============取消点餐===============");
             return;
         }
-        System.out.println("请输入点餐的莱品量(-1退出)：");
+        System.out.print("请输入点餐的莱品量(-1退出)：");
         int orderNums = Utility.readInt();
         if (orderNums == -1) {
             System.out.println("===============取消点餐===============");
@@ -101,7 +140,7 @@ public class MHLView {
     // 预定餐桌
     public void orderDiningTable() {
         System.out.println("===============预定餐桌===============");
-        System.out.println("请选择要预定的餐桌编号(-1退出)：");
+        System.out.print("请选择要预定的餐桌编号(-1退出)：");
         int orderId = Utility.readInt();
         if (orderId == -1) {
             System.out.println("===============取消预定餐桌===============");
@@ -198,7 +237,7 @@ public class MHLView {
                                     listBill();// 查看账单
                                     break;
                                 case "6":
-                                    System.out.println("结账");
+                                    payBill();// 结账
                                     break;
                                 case "9":
                                     loop = false;
