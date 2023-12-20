@@ -1,8 +1,10 @@
 package com.zzm.mhl.service;
 
 import com.zzm.mhl.dao.BillDAO;
+import com.zzm.mhl.domain.Bill;
 import com.zzm.mhl.domain.Menu;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -37,5 +39,10 @@ public class BillService {
 
         // 需要更新对应餐桌的状态
         return diningTableService.updateDiningTableState(diningTableId, "就餐中");
+    }
+
+    // 返回所有的账单， 提供给View调用
+    public List<Bill> list() {
+        return billDAO.queryMulti("select * from bill", Bill.class);
     }
 }
