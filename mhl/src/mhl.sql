@@ -1,6 +1,6 @@
 -- 创建满汉楼的数据库
 CREATE DATABASE mhl
--- 创建表 employee 表 (主键id，empId，name，pwd，job，如果需要可以自已加字段等)
+-- 创建表 employee 表 (主键id,empId,name,pwd,job,如果需要可以自已加字段等)
 # 用户表
 CREATE TABLE employee (
                           id INT PRIMARY KEY AUTO_INCREMENT, #自增
@@ -18,9 +18,9 @@ INSERT INTO employee VALUES(NULL, '666666', MD5('123456'), '老郑', '经理');
 
 SELECT * FROM employee;
 
--- 创建diningTable 表(id，state ，orderName , orderTel...)
+-- 创建diningTable 表(id,state ,orderName , orderTel...)
 CREATE TABLE diningTable (
-                             id INT PRIMARY KEY AUTO_INCREMENT, #自增，表示餐桌编号
+                             id INT PRIMARY KEY AUTO_INCREMENT, #自增,表示餐桌编号
         state VARCHAR(20) NOT NULL DEFAULT '', #餐桌的状态
                                 orderName VARCHAR(50) NOT NULL DEFAULT '', #预订人的名字
                                 orderTel VARCHAR(20) NOT NULL DEFAULT ''
@@ -33,10 +33,10 @@ INSERT INTO diningTable VALUES(NULL, '空', '', '');
 
 SELECT * FROM diningTable;
 
--- 创建menu表(id，name， type，price)
+-- 创建menu表(id,name, type,price)
 # 菜谱
 CREATE TABLE menu(
-                     id INT PRIMARY KEY AUTO_INCREMENT, #自增主键，作为菜谱编号(唯一)
+                     id INT PRIMARY KEY AUTO_INCREMENT, #自增主键,作为菜谱编号(唯一)
         NAME VARCHAR(50) NOT NULL DEFAULT '', #菜品名称
                         TYPE VARCHAR(50) NOT NULL DEFAULT '', #菜品种类
                         price DOUBLE NOT NULL DEFAULT 0 #价格
@@ -53,3 +53,18 @@ INSERT INTO menu VALUES (NULL, '甲鱼汤', '汤类', 100);
 INSERT INTO menu VALUES (NULL, '鸡蛋汤', '汤类', 16);
 
 SELECT * FROM menu;
+
+# 增加表 bill 账单表(id,billId,menuId,nums,bi11Date,money,state,diningTableId )
+# 账单流水,考虑可以分开结账,并考虑将来分别统计各个不同菜品的销售情况
+CREATE TABLE bill(
+                     id INT PRIMARY KEY AUTO_INCREMENT, #自增主键
+                        billId VARCHAR(50) NOT NULL DEFAULT '', #账单号可以按照自已规则生成 UUID
+                         menuId INT NOT NULL DEFAULT 0, #菜品的编号,也可以使用外键
+                         nums INT NOT NULL DEFAULT 0, #份数
+                         money DOUBLE NOT NULL DEFAULT 0, #金额
+                         diningTableId INT NOT NULL DEFAULT 0, #餐桌
+                         billDate DATETIME NOT NULL, #订单日期
+                         state VARCHAR(50) NOT NULL DEFAULT '' #状态 '未结账', '已经结账', '挂单', '现金', '支付宝', '坏账'
+)CHARSET=utf8;
+
+SELECT * FROM bill;
