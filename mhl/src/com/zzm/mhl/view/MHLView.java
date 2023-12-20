@@ -2,8 +2,10 @@ package com.zzm.mhl.view;
 
 import com.zzm.mhl.domain.DiningTable;
 import com.zzm.mhl.domain.Employee;
+import com.zzm.mhl.domain.Menu;
 import com.zzm.mhl.service.DiningTableService;
 import com.zzm.mhl.service.EmployeeService;
+import com.zzm.mhl.service.MenuService;
 import com.zzm.mhl.utils.Utility;
 
 import java.util.List;
@@ -20,14 +22,26 @@ public class MHLView {
     private String key = "";// 接收用户的选择
     // 定义EmployeeService 属性
     private EmployeeService employeeService = new EmployeeService();
-    // 调用DiningTable的属性
+    // 定义 DiningTable 属性
     private DiningTableService diningTableService = new DiningTableService();
+    // 定义 MenuService 属性
+    private MenuService menuService = new MenuService();
 
     public static void main(String[] args) {
         new MHLView().mainMenu();
     }
 
-    // 完成订座
+    // 显示所有菜品
+    public void listMenu() {
+        List<Menu> list = menuService.list();
+        System.out.println("\n菜品编号\t\t菜品名\t\t类别\t\t价格");
+        for (Menu menu : list) {
+            System.out.println(menu);
+        }
+        System.out.println("===============显示完毕===============");
+    }
+
+    // 预定餐桌
     public void orderDiningTable() {
         System.out.println("===============预定餐桌===============");
         System.out.println("请选择要预定的餐桌编号(-1退出)：");
@@ -68,7 +82,7 @@ public class MHLView {
         }
     }
 
-    // 显示所有餐桌状态
+    // 显示餐桌状态
     public void listDiningTable() {
         List<DiningTable> list = diningTableService.list();
         System.out.println("\n餐桌编号\t\t餐桌状态");
@@ -115,10 +129,10 @@ public class MHLView {
                                     listDiningTable();// 显示餐桌状态
                                     break;
                                 case "2":
-                                    orderDiningTable();// 完成订座
+                                    orderDiningTable();// 预定餐桌
                                     break;
                                 case "3":
-                                    System.out.println("显示所有菜品");
+                                    listMenu();// 显示所有菜品
                                     break;
                                 case "4":
                                     System.out.println("点餐服务");
