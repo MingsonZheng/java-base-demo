@@ -112,7 +112,7 @@ public class Utility {
      * @return Y或N
      */
     public static char readConfirmSelection() {
-        System.out.println("请输入你的选择(Y/N)：请小心选择");
+        System.out.print("确认是否预定(Y/N)");
         char c;
         for (; ;) {
             String str = readKeyBoard(1, false).toUpperCase();
