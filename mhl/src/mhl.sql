@@ -17,3 +17,18 @@ INSERT INTO employee VALUES(NULL, '6668633', MD5('123456'), '张无忌', '收银
 INSERT INTO employee VALUES(NULL, '666666', MD5('123456'), '老郑', '经理');
 
 SELECT * FROM employee;
+
+-- 创建diningTable 表(id，state ，orderName , orderTel...)
+CREATE TABLE diningTable (
+                             id INT PRIMARY KEY AUTO_INCREMENT, #自增，表示餐桌编号
+        state VARCHAR(20) NOT NULL DEFAULT '', #餐桌的状态
+                                orderName VARCHAR(50) NOT NULL DEFAULT '', #预订人的名字
+                                orderTel VARCHAR(20) NOT NULL DEFAULT ''
+) CHARSET=utf8 ;
+
+# 添加测试数据
+INSERT INTO diningTable VALUES(NULL, '空', '', '');
+INSERT INTO diningTable VALUES(NULL, '空', '', '');
+INSERT INTO diningTable VALUES(NULL, '空', '', '');
+
+SELECT * FROM diningTable;
