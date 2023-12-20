@@ -1,5 +1,7 @@
 package com.zzm.mhl.view;
 
+import com.zzm.mhl.domain.Employee;
+import com.zzm.mhl.service.EmployeeService;
 import com.zzm.mhl.utils.Utility;
 
 /**
@@ -12,6 +14,8 @@ public class MHLView {
     // 控制是否退出菜单
     private boolean loop = true;
     private String key = "";// 接收用户的选择
+    // 定义EmployeeService 属性
+    private EmployeeService employeeService = new EmployeeService();
 
     public static void main(String[] args) {
         new MHLView().mainMenu();
@@ -30,12 +34,12 @@ public class MHLView {
             switch (key) {
                 case "1":
                     System.out.println("输入员工号：");
-                    String id = Utility.readString(50);
+                    String empId = Utility.readString(50);
                     System.out.println("输入密 码：");
                     String pwd = Utility.readString(50);
-                    // 到数据库去判断[一会写]
-                    if ("123".equals(pwd)) {
-                        System.out.println("===============登陆成功===============");
+                    Employee employee = employeeService.getEmployeeByIdAndPwd(empId, pwd);
+                    if (employee != null) {// 说明存在该用户
+                        System.out.println("===============登陆成功[" + employee.getName() + "]===============");
                         // 显示二级菜单，这里二级菜单是循环操作，所以做成while
                         System.out.println("===============满汉楼(二级菜单)===============");
                         System.out.println("\t\t 1 显示餐桌状态");
