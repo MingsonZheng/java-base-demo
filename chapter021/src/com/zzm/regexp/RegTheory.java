@@ -21,7 +21,7 @@ public class RegTheory {
         // 目标: 匹配所有四个数字
         // 说明
         // 1. \\d 表示一个任意的数字
-        String regStr = "\\d\\d\\d\\d";
+        String regStr = "(\\d\\d)(\\d\\d)";
         // 2. 创建模式对象[即正则表达式对象]
         Pattern pattern = Pattern.compile(regStr);
         // 3. 创建匹配器
@@ -30,10 +30,14 @@ public class RegTheory {
 
         // 4. 开始匹配
         /**
-         * matcher.find() 完成的任务
-         * 1. 根据指定的规则 ，定位满足规则的子字符串( 比如1998)
+         * matcher.find() 完成的任务 (考虑分组)
+         * 什么是分组，比如 (\d\d)(\d\d) ，正则表达式中有() 表示分组,第1个()表示第1组,第2个()表示第2组
+         * 1. 根据指定的规则 ，定位满足规则的子字符串(比如(19)(98))
          * 2. 找到后，将 子字符串的开始的索引记录到 matcher对象的属性 int[] groups;
-         *    groups[0] = 0，把该子字符的结束的索引+1的值记录到 groups[1] = 4
+         *    2.1 groups[0] = 0，把该子字符的结束的索引+1的值记录到 groups[1] = 4
+         *    2.2 记录1组()匹配到的字符串 groups[2] = 0 groups[3] = 2
+         *    2.3 记灵2组()匹配到的字符串 groups[4] = 2 groups[5] = 4
+         *    2.4.如果有更多的分组...
          * 3. 同时记录oldLast 的值为 子字符串的结束的 索引+1的值即4，即下次执行find时，就从4开始匹配
          *
          * matcher.group(0) 分析
@@ -53,7 +57,16 @@ public class RegTheory {
          *  如果再次指向 find 方法。仍然安上面分析来执行
          */
         while (matcher.find()) {
+            // 小结
+            // 1. 如果正则表达式有() 即分组
+            // 2. 取出匹配的字符串规则如下
+            // 3. group(0) 表示匹配到的子字符串
+            // 4. group(1) 表示匹配到的子字符串的第1组字符串
+            // 5. group(2) 表示匹配到的子字符串的第2组字符串
+            // 6. 但是分组的数不能越界...
             System.out.println("找到：" + matcher.group(0));
+            System.out.println("第1组()匹配到的值=" + matcher.group(1));
+            System.out.println("第2组()匹配到的值=" + matcher.group(2));
         }
     }
 }
