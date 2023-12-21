@@ -17,7 +17,9 @@ public class MultiTableBean {
     private Date billDate;
     private String state;
     // 增加一个来自menu表的列 name
-    private String name;
+    // 思考 这里的属性名是否一定要和表的列名保持一致。
+    // 答: 可以不一致，但是需要sql做相应的修改，规范需要保持一致。
+    private String name2;
     // 增加来自menu表的列 price
     private Double price;
 
@@ -25,7 +27,7 @@ public class MultiTableBean {
 //        System.out.println("反射调用...");
     }
 
-    public MultiTableBean(Integer id, String billId, Integer menuId, Integer nums, Double money, Integer diningTableId, Date billDate, String state, String name, Double price) {
+    public MultiTableBean(Integer id, String billId, Integer menuId, Integer nums, Double money, Integer diningTableId, Date billDate, String state, String name2, Double price) {
         this.id = id;
         this.billId = billId;
         this.menuId = menuId;
@@ -34,7 +36,7 @@ public class MultiTableBean {
         this.diningTableId = diningTableId;
         this.billDate = billDate;
         this.state = state;
-        this.name = name;
+        this.name2 = name2;
         this.price = price;
     }
 
@@ -103,12 +105,12 @@ public class MultiTableBean {
     }
 
     // 给name生成setter 和 getter
-    public String getName() {
-        return name;
+    public String getName2() {
+        return name2;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName2(String name2) {
+        this.name2 = name2;
     }
 
     // 给price生成setter 利 getter
@@ -129,7 +131,7 @@ public class MultiTableBean {
                 "\t\t" + diningTableId +
                 "\t\t\t" + billDate +
                 "\t\t\t" + state +
-                "\t\t" + name +
+                "\t\t" + name2 +
                 "\t\t" + price;
     }
 }

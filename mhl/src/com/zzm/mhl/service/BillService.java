@@ -52,7 +52,7 @@ public class BillService {
 
     // 返回所有的账单并带有菜品名，价格， 提供给View调用
     public List<MultiTableBean> list2() {
-        return multiTableDAO.queryMulti("select bill.*, name, price " +
+        return multiTableDAO.queryMulti("select bill.*, name as name2, price " +
                         "from bill, menu " +
                         "where bill.menuId = menu.id", MultiTableBean.class);
     }
