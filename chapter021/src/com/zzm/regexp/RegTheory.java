@@ -29,6 +29,29 @@ public class RegTheory {
         Matcher matcher = pattern.matcher(content);
 
         // 4. 开始匹配
+        /**
+         * matcher.find() 完成的任务
+         * 1. 根据指定的规则 ，定位满足规则的子字符串( 比如1998)
+         * 2. 找到后，将 子字符串的开始的索引记录到 matcher对象的属性 int[] groups;
+         *    groups[0] = 0，把该子字符的结束的索引+1的值记录到 groups[1] = 4
+         * 3. 同时记录oldLast 的值为 子字符串的结束的 索引+1的值即4，即下次执行find时，就从4开始匹配
+         *
+         * matcher.group(0) 分析
+         * 源码：
+         *    public String group(int group) {
+         *         if (first < 0)
+         *             throw new IllegalStateException("No match found");
+         *         if (group < 0 || group > groupCount())
+         *             throw new IndexOutOfBoundsException("No group " + group);
+         *         if ((groups[group*2] == -1) || (groups[group*2+1] == -1))
+         *             return null;
+         *         return getSubSequence(groups[group * 2], groups[group * 2 + 1]).toString();
+         *     }
+         *  1. 根据 groups[0]=0 和 groups[1]=4 的记录的位置，从content开始截取子字符串返回
+         *     就是 [0,4) 包含 0 但是不包含索引为 4的位置
+         *
+         *  如果再次指向 find 方法。仍然安上面分析来执行
+         */
         while (matcher.find()) {
             System.out.println("找到：" + matcher.group(0));
         }
