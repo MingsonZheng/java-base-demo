@@ -18,11 +18,14 @@ public class MultiTableBean {
     private String state;
     // 增加一个来自menu表的列 name
     private String name;
+    // 增加来自menu表的列 price
+    private Double price;
 
     public MultiTableBean() {
+//        System.out.println("反射调用...");
     }
 
-    public MultiTableBean(Integer id, String billId, Integer menuId, Integer nums, Double money, Integer diningTableId, Date billDate, String state, String name) {
+    public MultiTableBean(Integer id, String billId, Integer menuId, Integer nums, Double money, Integer diningTableId, Date billDate, String state, String name, Double price) {
         this.id = id;
         this.billId = billId;
         this.menuId = menuId;
@@ -32,6 +35,7 @@ public class MultiTableBean {
         this.billDate = billDate;
         this.state = state;
         this.name = name;
+        this.price = price;
     }
 
     public Integer getId() {
@@ -99,13 +103,21 @@ public class MultiTableBean {
     }
 
     // 给name生成setter 和 getter
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    // 给price生成setter 利 getter
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     @Override
@@ -117,6 +129,7 @@ public class MultiTableBean {
                 "\t\t" + diningTableId +
                 "\t\t\t" + billDate +
                 "\t\t\t" + state +
-                "\t\t" + name;
+                "\t\t" + name +
+                "\t\t" + price;
     }
 }

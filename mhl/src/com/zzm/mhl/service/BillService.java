@@ -50,9 +50,9 @@ public class BillService {
         return billDAO.queryMulti("select * from bill", Bill.class);
     }
 
-    // 返回所有的账单并带有菜品名， 提供给View调用
+    // 返回所有的账单并带有菜品名，价格， 提供给View调用
     public List<MultiTableBean> list2() {
-        return multiTableDAO.queryMulti("select bill.*, name " +
+        return multiTableDAO.queryMulti("select bill.*, name, price " +
                         "from bill, menu " +
                         "where bill.menuId = menu.id", MultiTableBean.class);
     }

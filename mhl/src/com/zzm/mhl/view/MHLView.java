@@ -80,7 +80,7 @@ public class MHLView {
 //        }
 //        System.out.println("===============显示完毕===============");
         List<MultiTableBean> multiTableBeans = billService.list2();
-        System.out.println("\n编号\t\t菜品号\t\t菜品量\t\t金额\t\t桌号\t\t日期\t\t\t\t\t\t\t状态\t\t菜品名");
+        System.out.println("\n编号\t\t菜品号\t\t菜品量\t\t金额\t\t桌号\t\t日期\t\t\t\t\t\t\t状态\t\t菜品名\t\t价格");
         for (MultiTableBean bill : multiTableBeans) {
             System.out.println(bill);
         }
@@ -201,13 +201,13 @@ public class MHLView {
             System.out.println("===============满汉楼===============");
             System.out.println("\t\t 1 登陆满汉楼");
             System.out.println("\t\t 2 退出满汉楼");
-            System.out.println("请输入你的选择：");
+            System.out.print("请输入你的选择：");
             key = Utility.readString(1);
             switch (key) {
                 case "1":
-                    System.out.println("输入员工号：");
+                    System.out.print("输入员工号：");
                     String empId = Utility.readString(50);
-                    System.out.println("输入密 码：");
+                    System.out.print("输入密 码：");
                     String pwd = Utility.readString(50);
                     Employee employee = employeeService.getEmployeeByIdAndPwd(empId, pwd);
                     if (employee != null) {// 说明存在该用户
