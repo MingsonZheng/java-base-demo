@@ -19,12 +19,53 @@ public class HorseChessBoard {
 
     public static void main(String[] args) {
 
+        int row = 5;
+        int col = 5;
+
+        // 测试
+        long start = System.currentTimeMillis();
+        traversalChessBoard(chessBoard, row - 1, col - 1, 1);
+        long end = System.currentTimeMillis();
+
+        System.out.println("遍历耗时=" + (end - start));
+
         // 输出当前这个棋盘的情况
         for (int[] rows : chessBoard) {
             for (int step : rows) {// step 表示 该位置是马儿应该走的第几步
                 System.out.print(step + "\t");
             }
             System.out.println();
+        }
+    }
+
+    // 编写最核心的算法，遍历棋盘，如果遍历成功，就把 finished 设置为true
+    // 并且，将马儿走的每一步step，记录到 chessBoard
+    public static void traversalChessBoard(int[][] chessBoard, int row, int col, int step) {
+
+        // 先把step 记录到 chessBoard
+        chessBoard[row][col] = step;
+        // 把这个位置，设置为已经访问
+        visited[row * X + col] = true;
+        // 获取当前这个位置可以走的下一个位置有哪些
+        ArrayList<Point> ps = next(new Point(col, row));// col - X, row - Y
+        // 遍历
+        while (!ps.isEmpty()) {
+            // 取出一个位置(点)
+            Point p = ps.remove(0);
+            // 判断该位置是否走过，如果没有走过，我们就递归遍历
+            if (!visited[p.y * X + p.x]) {
+                // 递归遍历
+                traversalChessBoard(chessBoard, p.y, p.x, step + 1);
+            }
+        }
+
+        // 当退出while，看看是否遍历成功，如果没有成功，就重置相应的值，然后进行回溯
+        if (step < X * Y && !finished) {
+            // 重置
+            chessBoard[row][col] = 0;
+            visited[row * X + col] = false;
+        } else {
+            finished = true;
         }
     }
 
