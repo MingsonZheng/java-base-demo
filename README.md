@@ -1,5 +1,4 @@
-# java-base-demo
-demo for java base
+# 🎄Java 编程基础
 
 chapter001：Hello，转义字符，注释
 
